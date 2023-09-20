@@ -10,6 +10,6 @@ return {
     },
     files = {
       "**.lua",
-      "!test*"
+      "lua_modules/lib/lua/5.1/**.so",
     }
   }

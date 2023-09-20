@@ -1,9 +1,10 @@
 package.cpath = "lua_modules/lib/lua/5.1/?.so;"..package.cpath
 
+local uv = require("uv")
+local timer = require("timer")
+
 ---@type yue.gui
 local gui = require("yue.gui")
-local timer = require("timer")
-local uv = require("uv")
 
 ---@type { enqueue: fun(callback: (fun(): boolean), interval: number?), clock: fun(): number }
 local utilities = require("utilities")
