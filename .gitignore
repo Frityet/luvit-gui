@@ -1,0 +1,10 @@
+/luarocks
+/lua
+/lua_modules
+/.luarocks
+
+
+*.o
+*.so
+
+/deps/
