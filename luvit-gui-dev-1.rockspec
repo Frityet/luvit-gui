@@ -7,7 +7,7 @@ source = {
 }
 description = {
    homepage = "*** please enter a project homepage ***",
-   license = "GPLv3"
+   license = "MIT"
 }
 dependencies = {
    "lua ~> 5.1",
