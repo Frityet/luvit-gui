@@ -35,11 +35,6 @@
         "deps/",
         "lua_modules/lib/lua/5.1/",
         "lua_modules/share/lua/5.1/",
-        "/Users/frityet/Library/Application Support/Code/User/globalStorage/sumneko.lua/addonManager/addons/yue/module/library",
-        "/Users/frityet/Library/Application Support/Code/User/globalStorage/sumneko.lua/addonManager/addons/luafilesystem/module/library",
-        "/Users/frityet/Library/Application Support/Code/User/globalStorage/sumneko.lua/addonManager/addons/penlight/module/library",
-        "${3rd}/lfs/library",
-        "/Users/frityet/Library/Application Support/Code/User/globalStorage/sumneko.lua/addonManager/addons/luvit/module/library",
     ],
     "diagnostics.globals": [
         "lfs",
