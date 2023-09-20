@@ -22,29 +22,60 @@ end
 
 local container = gui.Container.create()
 container:setstyle {
-    padding = 10,
-    width = 480;
-    height = 480;
+    padding = 25,
 }
 
-local label = gui.Label.create "Received"
-container:addchildview(label)
+local input = gui.Entry.create()
+container:addchildview(input)
+gui.globalshortcut:register("CmdOrCtrl+V", function ()
+    input:settext(gui.Clipboard.get():gettext())
+end)
+
+local out = ""
+local out_picker = gui.Button.create "Choose file"
+function out_picker:onclick()
+    local dialog = gui.FileSaveDialog.create()
+    dialog:settitle("Select out file")
+    if dialog:runforwindow(window) then
+        out = dialog:getresult()
+        out_picker:settitle(out)
+        window:setcontentsize(container:getpreferredsize())
+    end
+end
+container:addchildview(out_picker)
 
 local progress = gui.ProgressBar.create()
 container:addchildview(progress)
 
-timer.setTimeout(3333, function (...)
-    progress:setvalue(33)
-end)
+local bytes_dled = gui.Label.create "Downloaded "
+container:addchildview(bytes_dled)
+bytes_dled:setvisible(false)
 
-timer.setTimeout(6666, function (...)
-    progress:setvalue(66)
-end)
+local get = gui.Button.create "GET"
+function get:onclick()
+    progress:setvalue(0)
+    bytes_dled:setvisible(true)
+    local downloaded = 0
+    local f = assert(io.open(out, "w+b"))
+    https.get(input:gettext(), function (res)
+        local size = tonumber(res.headers["Content-Length"])
+        res:on("data", function (chunk)
+            downloaded = downloaded + #chunk
 
-timer.setTimeout(10000, function (...)
-    progress:setvalue(1000)
-end)
+            if size ~= nil and size ~= 0 then
+                progress:setvalue(downloaded/size * 100)
+            end
 
+            bytes_dled:settext("Downloaded "..downloaded.."/"..(size or 1).." bytes!")
+            f:write(chunk)
+        end)
+
+        res:on("close", function ()
+            f:close()
+        end)
+    end)
+end
+container:addchildview(get)
 
 window:setcontentview(container)
 window:setcontentsize(container:getpreferredsize())
