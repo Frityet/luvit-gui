@@ -10,7 +10,8 @@
             "name": "Debug",
             "luaexe": "luvit",
             "luaVersion": "jit",
-            "program": "${workspaceFolder}/main.lua"
+            "program": "${workspaceFolder}/main.lua",
+            "stopOnEntry": false
         }
     ]
 }

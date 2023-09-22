@@ -32,9 +32,12 @@
         ".luarocks"
     ],
     "workspace.library": [
+        "/Users/frityet/Library/Application Support/Code/User/globalStorage/sumneko.lua/addonManager/addons/luvit/module/library",
+        "/Users/frityet/Library/Application Support/Code/User/globalStorage/sumneko.lua/addonManager/addons/yue/module/library",
         "deps/",
         "lua_modules/lib/lua/5.1/",
         "lua_modules/share/lua/5.1/",
+        "${3rd}/lfs/library",
     ],
     "diagnostics.globals": [
         "lfs",
