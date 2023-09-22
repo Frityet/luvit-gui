@@ -7,7 +7,7 @@ return {
     author = { name = "Amrit Bhogal", email = "ambhogal01@gmail.com" },
     homepage = "https://github.com/Frityet/LuvitGUI",
     dependencies = {
-      "luvit/luvit",
+      "luvit/luvit"
     },
     files = {
       "**.lua",
